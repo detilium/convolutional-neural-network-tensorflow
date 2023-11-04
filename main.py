@@ -1,8 +1,8 @@
 import tensorflow as tf
 
 # setup training variables
-learning_rate = 0.05
-epochs = 20
+learning_rate = 0.001
+epochs = 6
 
 # load MNIST dataset
 (x_train, y_train),(x_test, y_test) = tf.keras.datasets.mnist.load_data()
@@ -17,7 +17,7 @@ model = tf.keras.models.Sequential([
 
 model.build(x_train[0].shape)
 
-model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=learning_rate),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=[tf.keras.metrics.SparseCategoricalAccuracy()])
 
